@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISIT2k26</title>
+  <link rel="icon" type="image/png" href="assets/fav.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Syne:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .event-hero {
+      min-height: 45vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 120px clamp(1.5rem,8vw,8rem) 3rem;
+      position: relative;
+      background: radial-gradient(ellipse 80% 80% at 50% 30%, rgba(255,0,128,0.12), transparent 70%), var(--bg-deep);
+    }
+    .event-hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #f472b6, transparent);
+    }
+    .event-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .info-card {
+      padding: 1.8rem;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+    }
+    .info-card:hover {
+      border-color: rgba(255,0,128,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(255,0,128,0.15);
+    }
+    .info-card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #f472b6;
+      margin-bottom: 0.6rem;
+    }
+    .info-card-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .rules-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .rules-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .rules-list li::before {
+      content: '→';
+      color: #f472b6;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .content-block {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .content-block:last-of-type { border-bottom: none; }
+    .content-block h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #f472b6;
+      margin-bottom: 1.2rem;
+    }
+    .content-block p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .prize-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold), #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text); }
+  </style>
+</head>
+
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="bg-particles" id="bgParticles"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="logo">VISIT2k26</div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="competitions.html" class="active">Competitions</a>
+    <a href="devteam.html">Dev Team</a>
+  </div>
+  <div class="hamburger" id="hamburger">&#9776;</div>
+</nav>
+
+<div class="event-hero">
+  <div>
+    <span class="badge cultural" style="margin-bottom:1rem; display:inline-block;">Cultural</span>
+    <h1 style="font-family:'Orbitron',sans-serif; font-size:clamp(2rem,7vw,5rem); font-weight:900; line-height:1.1; background:linear-gradient(135deg,#fff,#f472b6); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">🎤 Singing Jodi</h1>
+    <p style="color:var(--text-muted); margin-top:0.75rem; font-size:1rem; font-weight:300;">Two voices. One harmony.</p>
+  </div>
+</div>
+
+<div class="event-detail">
+  <a href="competitions.html" class="back-link">← Back to Events</a>
+
+  <div class="event-info-grid">
+    <div class="info-card">
+      <div class="info-card-label">👥 Participation</div>
+      <div class="info-card-value">Duo</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">⏱ Duration</div>
+      <div class="info-card-value">3–5 Minutes</div>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h3>About</h3>
+    <p>A musical duet competition where pairs showcase their vocal harmony, coordination, and stage presence.</p>
+  </div>
+
+  <div class="content-block">
+    <h3>Rules & Regulations</h3>
+    <ul class="rules-list">
+      <li>Duo performance.</li>
+      <li>Time limit: 3–5 minutes.</li>
+      <li>Karaoke is allowed.</li>
+      <li>Language is open.</li>
+    </ul>
+  </div>
+
+  <div class="content-block">
+    <h3>Prize Pool</h3>
+    <div class="prize-tag">Certificates of Merit for Top 3 Positions</div>
+  </div>
+
+  <div class="action-buttons">
+  <a href="https://forms.gle/your-link" target="_blank" class="btn-primary">
+    🚀 Register Now
+  </a>
+
+  <a href="https://chat.whatsapp.com/YOUR_INVITE_CODE" target="_blank" class="btn-whatsapp">
+    📱 Join Group
+  </a>
+</div>
+
+<footer>
+  <div class="footer-logo">VISIT2k26</div>
+  <p class="footer-text">© 2026 | Made with <span class="footer-heart">♥</span> by Alpha Pheonix</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISIT2k26</title>
+  <link rel="icon" type="image/png" href="assets/fav.png">  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Syne:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    .coreteam-page {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 80px;
+    }
+
+    /* ── Hero ── */
+    .coreteam-hero {
+      text-align: center;
+      padding: 140px 2rem 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .coreteam-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 30%, rgba(176,38,255,0.13), transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(0,229,255,0.07), transparent 60%);
+      pointer-events: none;
+    }
+    .coreteam-hero .section-label {
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .coreteam-hero .section-label::before { display: none; }
+    .coreteam-hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.8rem, 9vw, 6rem);
+      font-weight: 900;
+      line-height: 0.95;
+      background: linear-gradient(135deg, #fff 10%, var(--accent) 55%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 40px rgba(176,38,255,0.4));
+      margin-bottom: 1.2rem;
+    }
+    .coreteam-hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Committee Block ── */
+    .committee-block {
+      width: min(92%, 1100px);
+      margin: 0 auto 90px;
+    }
+
+    .committee-title {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 50px;
+      padding: 22px 32px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .faculty-block .committee-title {
+      background: linear-gradient(135deg, rgba(255,183,0,0.1), rgba(176,38,255,0.06));
+      border: 1px solid rgba(255,183,0,0.25);
+    }
+    .student-block .committee-title {
+      background: linear-gradient(135deg, rgba(0,229,255,0.08), rgba(176,38,255,0.06));
+      border: 1px solid rgba(0,229,255,0.2);
+    }
+    .committee-title-icon { font-size: 2.2rem; flex-shrink: 0; }
+    .committee-title-text h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.3rem, 3.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+    .faculty-block .committee-title-text h2 { color: var(--gold); }
+    .student-block .committee-title-text h2 { color: var(--accent2); }
+    .committee-title-text p {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+    .committee-title-line { flex: 1; height: 1px; }
+    .faculty-block .committee-title-line {
+      background: linear-gradient(90deg, rgba(255,183,0,0.3), transparent);
+    }
+    .student-block .committee-title-line {
+      background: linear-gradient(90deg, rgba(0,229,255,0.25), transparent);
+    }
+
+    /* ── Row Label ── */
+    .row-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+    .row-label:first-of-type { margin-top: 0; }
+    .row-label-text {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .row-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--glass-border);
+    }
+
+    /* ── Cards ── */
+    .cards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .member-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 28px 20px 22px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .member-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .member-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(176,38,255,0.4);
+      box-shadow: 0 16px 50px rgba(176,38,255,0.18);
+    }
+    .member-card:hover::before { opacity: 1; }
+
+    .card-xl { width: 230px; }
+    .card-lg { width: 200px; }
+    .card-md { width: 175px; }
+    .card-sm { width: 158px; }
+
+    /* ── Member Photo ── */
+    .member-photo {
+      border-radius: 14px;
+      margin-bottom: 16px;
+      border: 2px solid var(--glass-border);
+      object-fit: cover;
+      object-position: top;
+      transition: border-color var(--transition), filter var(--transition), transform var(--transition);
+      background: rgba(176,38,255,0.08);
+      display: block;
+    }
+    .card-xl .member-photo { width: 110px; height: 110px; }
+    .card-lg .member-photo { width:  95px; height:  95px; }
+    .card-md .member-photo { width:  80px; height:  80px; }
+    .card-sm .member-photo { width:  70px; height:  70px; }
+    .member-card:hover .member-photo {
+      border-color: rgba(176,38,255,0.55);
+      filter: brightness(1.06);
+      transform: scale(1.04);
+    }
+
+    .member-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .card-xl .member-name { font-size: 1rem; }
+    .card-lg .member-name { font-size: 0.95rem; }
+    .card-md .member-name { font-size: 0.88rem; }
+    .card-sm .member-name { font-size: 0.82rem; }
+
+    .member-role {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: 2px;
+    }
+
+    /* ── Faculty theme ── */
+    .faculty-block .member-card::before { background: linear-gradient(90deg, var(--gold), var(--accent)); }
+    .faculty-block .member-role { background: rgba(255,215,0,0.1); color: var(--gold); border: 1px solid rgba(255,215,0,0.25); }
+    .faculty-block .card-xl { border-color: rgba(255,215,0,0.18); background: linear-gradient(145deg, rgba(255,215,0,0.04), rgba(0,0,0,0.4)); }
+
+    /* ── Student theme ── */
+    .student-block .member-card::before { background: linear-gradient(90deg, var(--accent2), var(--accent)); }
+    .student-block .member-role { background: rgba(0,229,255,0.1); color: var(--accent2); border: 1px solid rgba(0,229,255,0.22); }
+    .student-block .card-xl { border-color: rgba(0,229,255,0.18); background: linear-gradient(145deg, rgba(0,229,255,0.04), rgba(0,0,0,0.4)); }
+
+    /* ── President gold highlight ── */
+    .card-president { border-color: rgba(255,215,0,0.22) !important; background: linear-gradient(145deg, rgba(255,215,0,0.05), rgba(0,0,0,0.4)) !important; }
+    .card-president::before { background: linear-gradient(90deg, var(--gold), var(--accent2)) !important; }
+    .card-president .member-role { background: rgba(255,215,0,0.12) !important; color: var(--gold) !important; border-color: rgba(255,215,0,0.3) !important; }
+
+    /* ── Divider ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      width: min(92%, 1100px);
+      margin: 0 auto 70px;
+    }
+    .section-divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--glass-border), transparent); }
+    .section-divider-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); flex-shrink: 0; }
+
+    @media (max-width: 600px) {
+      .card-xl, .card-lg, .card-md, .card-sm { width: 150px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="bg-particles" id="bgParticles"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="logo">VISIT2k26</div>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="coreteam.html" class="active">Core Team</a>
+    <a href="devteam.html">Dev Team</a>
+  </div>
+  <div class="hamburger" id="hamburger">&#9776;</div>
+</nav>
+
+<div class="coreteam-page">
+
+  <!-- Hero -->
+  <div class="coreteam-hero" data-aos="fade-up">
+    <p class="section-label">The People Behind It All</p>
+    <h1>Core Team</h1>
+    <p>The faculty and student leaders who made VISIT2k26 possible — from vision to execution.</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       FACULTY COMMITTEE
+  ══════════════════════════════════ -->
+  <div class="committee-block faculty-block" data-aos="fade-up">
+
+    <div class="committee-title">
+      <div class="committee-title-icon">🎓</div>
+      <div class="committee-title-text">
+        <h2>Faculty Committee</h2>
+        <p>Academic Leadership &amp; Guidance</p>
+      </div>
+      <div class="committee-title-line"></div>
+    </div>
+
+    <!-- Convener -->
+    <div class="row-label">
+      <span class="row-label-text">Convener</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-xl">
+        <img src="assets/coreteam/convener.jpg" alt="Convener" class="member-photo">
+        <div class="member-name">Dr. Name Here</div>
+        <div class="member-role">Convener</div>
+      </div>
+    </div>
+
+    <!-- Co-Conveners -->
+    <div class="row-label">
+      <span class="row-label-text">Co-Conveners</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-lg">
+        <img src="assets/coreteam/co-convener1.jpg" alt="Co-Convener 1" class="member-photo">
+        <div class="member-name">Dr. Name Here</div>
+        <div class="member-role">Co-Convener</div>
+      </div>
+      <div class="member-card card-lg">
+        <img src="assets/coreteam/co-convener2.jpg" alt="Co-Convener 2" class="member-photo">
+        <div class="member-name">Dr. Name Here</div>
+        <div class="member-role">Co-Convener</div>
+      </div>
+    </div>
+
+  </div><!-- /faculty-block -->
+
+
+  <!-- Divider -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-dot"></div>
+    <div class="section-divider-line"></div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       STUDENT COMMITTEE
+  ══════════════════════════════════ -->
+  <div class="committee-block student-block" data-aos="fade-up">
+
+    <div class="committee-title">
+      <div class="committee-title-icon">🎯</div>
+      <div class="committee-title-text">
+        <h2>Student Committee</h2>
+        <p>The Crew That Runs the Show</p>
+      </div>
+      <div class="committee-title-line"></div>
+    </div>
+
+    <!-- Student Convener & Co-Convener -->
+    <div class="row-label">
+      <span class="row-label-text">Student Convener &amp; Co-Convener</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-xl">
+        <img src="assets/coreteam/student-convener.jpg" alt="Student Convener" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Student Convener</div>
+      </div>
+      <div class="member-card card-xl">
+        <img src="assets/coreteam/student-co-convener.jpg" alt="Student Co-Convener" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Student Co-Convener</div>
+      </div>
+    </div>
+
+    <!-- President -->
+    <div class="row-label">
+      <span class="row-label-text">President</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-xl card-president">
+        <img src="assets/coreteam/president.jpg" alt="President" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">President</div>
+      </div>
+    </div>
+
+    <!-- Dean's Nominee President -->
+    <div class="row-label">
+      <span class="row-label-text">Dean's Nominee President</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-lg card-president">
+        <img src="assets/coreteam/deans-nominee.jpg" alt="Dean's Nominee" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Dean's Nominee</div>
+      </div>
+    </div>
+
+    <!-- Vice Presidents -->
+    <div class="row-label">
+      <span class="row-label-text">Vice Presidents</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-lg">
+        <img src="assets/coreteam/vice-president1.jpg" alt="Vice President 1" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Vice President I</div>
+      </div>
+      <div class="member-card card-lg">
+        <img src="assets/coreteam/vice-president2.jpg" alt="Vice President 2" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Vice President II</div>
+      </div>
+      <div class="member-card card-lg">
+        <img src="assets/coreteam/vice-president3.jpg" alt="Vice President 3" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Vice President III</div>
+      </div>
+    </div>
+
+    <!-- Treasurer -->
+    <div class="row-label">
+      <span class="row-label-text">Treasurer</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-lg">
+        <img src="assets/coreteam/treasurer.jpg" alt="Treasurer" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Treasurer</div>
+      </div>
+    </div>
+
+    <!-- General Secretaries -->
+    <div class="row-label">
+      <span class="row-label-text">General Secretaries</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-md">
+        <img src="assets/coreteam/general-secretary1.jpg" alt="General Secretary 1" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Gen. Secretary I</div>
+      </div>
+      <div class="member-card card-md">
+        <img src="assets/coreteam/general-secretary2.jpg" alt="General Secretary 2" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Gen. Secretary II</div>
+      </div>
+      <div class="member-card card-md">
+        <img src="assets/coreteam/general-secretary3.jpg" alt="General Secretary 3" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Gen. Secretary III</div>
+      </div>
+    </div>
+
+    <!-- Joint Secretaries -->
+    <div class="row-label">
+      <span class="row-label-text">Joint Secretaries</span>
+      <div class="row-label-line"></div>
+    </div>
+    <div class="cards-row">
+      <div class="member-card card-sm">
+        <img src="assets/coreteam/joint-secretary1.jpg" alt="Joint Secretary 1" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Jt. Secretary I</div>
+      </div>
+      <div class="member-card card-sm">
+        <img src="assets/coreteam/joint-secretary2.jpg" alt="Joint Secretary 2" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Jt. Secretary II</div>
+      </div>
+      <div class="member-card card-sm">
+        <img src="assets/coreteam/joint-secretary3.jpg" alt="Joint Secretary 3" class="member-photo">
+        <div class="member-name">Name Here</div>
+        <div class="member-role">Jt. Secretary III</div>
+      </div>
+    </div>
+
+  </div><!-- /student-block -->
+
+</div><!-- /coreteam-page -->
+
+<footer>
+  <div class="footer-logo">VISIT2k26</div>
+  <p class="footer-text">© 2026 | Made with <span class="footer-heart">♥</span> by Alpha Pheonix</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
